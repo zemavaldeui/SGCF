@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <title>Student Grade</title>
+</head>
+
+<style>
+    button{
+        background-color: #1e90ff;
+    }
+</style>
+
+<body>
+  <h2>Student Grade Form</h2>
+  <form id="gradeForm">
+    <label for="studentName">Student Name:</label>
+    <input type="text" id="studentName" name="studentName" required><br><br>
+
+    <label for="teacherName">Teacher Name:</label>
+    <input type="text" id="teacherName" name="teacherName" required><br><br>
+
+    <label for="studentGrade">Student Grade:</label>
+    <input type="number" id="studentGrade" name="studentGrade" required><br><br>
+
+    <button type="button" onclick="checkGrade()">Submit</button>
+  </form>
+
+  <h3>Result:</h3>
+  <p id="result"></p>
+
+  <script>
+    function checkGrade() {
+      let studentName = document.getElementById("studentName").value;
+      let teacherName = document.getElementById("teacherName").value;
+      let grade = parseInt(document.getElementById("studentGrade").value);
+
+      let status = grade >= 80 ? "Passed" : "Failed";
+
+      document.getElementById("result").innerText =
+        "Student: " + studentName + "\n" +
+        "Teacher: " + teacherName + "\n" +
+        "Grade: " + grade + " → " + status;
+    }
+    document.getElementById("gradeForm").addEventListener("reset", function() {
+      document.getElementById("result").innerText = "";
+    });
+    </script>
+</body>
+</html>
